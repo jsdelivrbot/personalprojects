@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		   <script src="https://d3js.org/d3.v4.min.js"></script>
+	</head>
+	<body>
+		<svg></svg>
+		<script>
+			d3.csv("./cities.csv", function(data) {
+				   console.log(data[0].country);
+				   });
+			d3.json("./twitter.json", function(data) {
+				console.log(data);
+				console.log("BREAK BREAK \n")
+				console.log(data.tweets)
+			});
+
+			var testArray =  [88,10000,1,75,12,35];
+			var min = d3.min(testArray, el => el);
+			var max = d3.max(testArray, el => el);
+
+			//these two mean the same thing
+			var mean = d3.mean(testArray, el => el);
+			var mean2 = d3.mean(testArray, function(el) {
+				return el;
+			});
+
+			d3.csv("./cities.csv", data => {
+				var csvextent = d3.extent(data, el => +el.population);
+				console.log("extent: " + csvextent);
+			});
+
+
+d3.select("svg")
+		.selectAll("rect")
+	  .data([15, 50, 22, 8, 100, 10])
+	  .enter()
+	  .append("rect")
+	.style("fill", "#FE9922")
+	  .attr("width", 30)
+	  .attr("height", function(d){
+				var d= d*4;
+				//console.log(d);
+				return d;
+			})
+	  .style("opacity", (d,i) => i*.15)
+		.attr("x", (d,i)=> i*30)
+		.attr("y", d => 400-4*d);
+
+
+
+
+		</script>
+
+		<style>
+
+			svg {
+				height: 800px;
+			}
+		</style>
+
+	</body>
+</html>

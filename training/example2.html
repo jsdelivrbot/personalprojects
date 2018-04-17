@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<script src="d3.v4.min.js">
+		var someData = ['filler', 'filler', 'filler', 'filler','filler'];
+		d3.select("body").selectAll("div")
+			.data(someData)
+			.enter()
+			.append("div")
+			.html("Wow")
+			.append("span")
+			.html("wpw2")
+			.append("span")
+			.html("most WOW");
+
+
+
+
+	</script>
+	<style>
+	   #borderdiv {
+	   width: 200px;
+	   height: 50px;
+	border: 1px solid gray;
+	}
+	</style>
+	<body>
+	   <div id="borderdiv"></div>
+	 </body>
+</html>

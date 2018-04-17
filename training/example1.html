@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+<body>
+  <div id="infovizDiv">
+	  <svg style="width:700px;height:700px;border:1px lightgray solid;">
+		<path d="M 10,60 40,30 50,50 60,30 70,80"
+		   style="fill:black;stroke:gray;stroke-width:4px;" />
+		<polygon style="fill:gray;"
+		   points="80,400 120,400 160,440 120,480 60,460" />
+		<g>
+			<line x1="200" y1="100" x2="450" y2="225"
+				  style="stroke:black;stroke-width:2px;"/>
+			  <circle cy="100" cx="200" r="30"/>
+			  <rect x="410" y="200" width="80" height="50"
+				  style="fill:pink;stroke:black;stroke-width:1px;" />
+		</g>
+		  <g transform="translate(10,15)">
+			   <circle id="first" r="2"/>
+			   <text>This circle's Label</text>
+		  </g>
+		<g id="second" transform="translate(100,50)">
+		   <circle r="2" />
+		   <text>This circle's Label</text>
+		</g>
+		<g transform="translate(100,400) scale(2.5)">
+		   <circle r="2"/>
+		   <text>This circle's Label</text>
+		</g>
+	  </svg>
+  </div>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.redfill {
+			fill: red;
+			stroke-width: 20px;
+		}
+
+		.dashed {
+						stroke: pink;
+
+		}
+	</style>
+
+	<script>
+		var shorten = d3.select("rect").style;
+		//d3.select("circle").remove();
+		d3.select("rect").style("fill","green");
+		d3.select("rect").style("stroke-width","15px");
+		d3.select("rect").style("stroke","cornflowerblue");
+		d3.select("svg").style("background", "darkgray");
+		d3.select("#second").style("font-family", "Futura");
+		d3.select("#first").style("fill", "red");
+		d3.select("circle").attr("class","redfill");
+		d3.select("circle").classed("dashed", true);
+
+	</script>
+</body>
+</html>
