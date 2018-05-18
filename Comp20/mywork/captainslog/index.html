@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Captain's PRIYA Log</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var date = Date();
+			$("#msg").on('change', function store(){
+				txt = document.getElementById("msg").value;
+				localStorage[new Date().getTime()] = txt;
+				reload();
+			});
+
+			function reload() {
+				var elem = document.getElementById("log");
+				var output = "";
+				for (var i = (localStorage.length - 1); i >=0; i--) {
+					output = output + "<p>" + localStorage.getItem(localStorage.key(i)) + "</p>\n";
+				}
+				elem.innerHTML = output;
+
+			}
+
+		});
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<h1>Captain's Log</h1>
+	<h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
+	<div id="log"></div>
+</body>
+</html>

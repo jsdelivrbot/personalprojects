@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Messages</title>
+	<script>
+		function loadMessages() {
+			// Step 1: Make an instance of XMLHttpRequest
+			request = new XMLHttpRequest();
+
+			// Step 2: Set up HTTP request
+			request.open("GET", "https://messagehub.herokuapp.com/messages.json", true);
+			console.log("Hit me 1");
+
+			// Step 3: Set up callback on what to do when response is received
+			request.onreadystatechange = function() {
+				console.log("Hit me 2");
+
+				// Step 3A: get the response text if and only if readyState is 4
+				if (request.readyState == 4 && request.status == 200) {
+
+					// Step 5: do something with the response data (i.e., the JSON)
+					rawData = request.responseText;
+					console.log(rawData);
+				}
+			}
+
+			console.log("Hit me 3");
+
+			// Step 4: Fire off the request
+			request.send();
+			console.log("Hit me 4");
+		}
+	</script>
+</head>
+
+<body onload="loadMessages()">
+	<h1>Messages</h1>
+	<div id="messages">Loading...</div>
+</body>
+</html>

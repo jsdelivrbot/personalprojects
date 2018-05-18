@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Rick Roll</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Rick Roll</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls></video>
+<div id="lyrics"></div>
+
+<script>
+  // Complete this section and create a CSS file named style.css
+  var video = document.getElementById("rickroll");
+  var timer = video.currentTime;
+  var caption = document.getElementById("lyrics");
+  video.addEventListener("timeupdate", function() {
+    timer.innerHTML = video.currentTime;
+
+    if (video.currentTime > 0 && video.currentTime < 18) {
+      caption.innerHTML ="<p>&#9836; &#9836; &#9836;</p>";
+    }
+    else if (video.currentTime > 18 && video.currentTime < 35) {
+      caption.innerHTML ="	<p> We're no strangers to love.<br> You know the rules and so do I.<br> A full commitment's what I'm thinking of.<br> You wouldn't get this from any other guy </p>";
+    }
+    else if (video.currentTime > 35 && video.currentTime < 43) {
+      caption.innerHTML ="	<p> I just wanna tell you how I'm feeling<br> Gotta make you understand</p>";
+    }
+    else if (video.currentTime > 43 && video.currentTime < 60) {
+      caption.innerHTML ="	<p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+    else if (video.currentTime > 60 && video.currentTime < 77) {
+      caption.innerHTML ="	<p>We've known each other for so long<br>Your heart's been aching, but<br> You're too shy to say it<br>Inside, we both know what's been going on<br>We know the game and we're gonna play it</p>";
+    }
+    else if (video.currentTime > 77 && video.currentTime < 84) {
+      caption.innerHTML ="	<p>And if you ask me how I'm feeling<br>Don't tell me you're too blind to see</p>";
+    }
+    else if (video.currentTime > 84 && video.currentTime < 101) {
+      caption.innerHTML ="	<p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+    else if (video.currentTime > 101 && video.currentTime < 102) {
+      caption.innerHTML ="<h3>&#9836; &#9836; &#9836;</h3>";
+    }
+    else if (video.currentTime > 102 && video.currentTime < 120) {
+      caption.innerHTML ="	<p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+    else if (video.currentTime > 120 && video.currentTime < 135) {
+      caption.innerHTML ="	<p> (Ooh, give you up)<br>(Ooh, give you up)<br>Never gonna give, never gonna give<br>(Give you up)<br>Never gonna give, never gonna give<br>(Give you up)</p>";
+    }
+    else if (video.currentTime > 135 && video.currentTime < 153) {
+      caption.innerHTML ="	<p>We've known each other for so long<br>Your heart's been aching, but<br> You're too shy to say it<br>Inside, we both know what's been going on<br>We know the game and we're gonna play it</p>";
+    }
+    else if (video.currentTime > 153 && video.currentTime < 161) {
+      caption.innerHTML ="	<p> I just wanna tell you how I'm feeling<br> Gotta make you understand</p>";
+    }
+     else if (video.currentTime > 161 && video.currentTime < 177) {
+      caption.innerHTML ="	<p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+     else if (video.currentTime > 177 && video.currentTime < 178) {
+      caption.innerHTML ="<h3>&#9836; &#9836; &#9836;</h3>";
+    }
+    else if (video.currentTime > 178 && video.currentTime < 194) {
+      caption.innerHTML ="	<p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+    else if (video.currentTime > 194 && video.currentTime < 212) {
+      caption.innerHTML ="	<p id='fade'> &#9836;fading out&#9836;<br</p><p> Never gonna give you up <br> Never gonna let you down<br>Never gonna run around and desert you <br> Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you</p>";
+    }
+
+    else {
+      caption.innerHTML="";
+    }
+  }, false);
+</script>
+</body>
+</html>
