@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title> Priya Misner</title>
+    <link rel="stylesheet" href="./cssreset.css">
+    <link rel="stylesheet" href="style_work.css">
+    <link rel="stylesheet" href="./greeneggs.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600|Oswald:700|Inconsolata" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+    <div class="wrap">
+
+
+      <div class="content">
+     <a href="./index.html">  <div class="backarrow"> </div></a>
+           <h1> Green Eggs and Ham</h1>
+          <h2> A Seuss-ian data visualization</h2>
+        <h2><a href="./downloads/GreenEggsandHam.pdf">Download</a></h2>
+           <div class="imagebox">
+            <img src="./images/GreenEggsandHam.png">
+          </div>
+        <div class="redline"> </div>
+        <div class="challenge">
+          <h3> Challenge </h3>
+          <p> As a final project for the Data Visualization class I took fall semester of 2017 at the School of the Museum of Fine Arts, the challenge was to create a tree diagram that depicts contingent relationships between a data set and relates at keast four attributes of the relationships between items in the tree. </p>
+        </div>
+        <div class="brainstorming">
+          <h3> Brainstorming</h3>
+          <div class="imagebox_brain"> </div>
+          <p> A couple weeks before this project was assigned, I spent the afternoon holiday shopping for my seven-year old cousins and stumbled upon an old collection of Dr. Seuss books. Flipping though Green Eggs and Ham, I discovered that the book had been written after a bet between Dr.Seuss and his publisher that he couldn't write a book with only fifty words (and found a great gift for my cousins!).
+          </p>
+          <p> When it came time to choose a data set for this, Dr. Seuss was the only smart choice. Given that only fifty words are used throught the book, I wanted to track the frequency words appeared and the order in which they came so that it was possible to both 'read' Green Eggs and Ham through the visualization and also see the data.  </p>
+          <p> I cycled through several different tree diagrams trying to find the best way to display the data but settled on a mind-map like layout that captured that Seussian whimsy over a more orderly but sterile ring format.   </p>
+        </div>
+        <div class="code">
+          <h3> Python </h3>
+          <p> With over 300,000 possible combinations going through the entirety of Green Eggs and Ham and tallying the frequency words appeared both in the whole story and in specific relation to other words (ie  like how the word 'eggs' is preceded by 'green' and followed by 'and' eight times in all sentences that start with 'I') would be incredibly time consuming. Imagine if I lost track of my count and had to start again! So, I loaded the story into an csv file and wrote a python program to do the heavy lifting for me. A snippet of that code is shown below: </p>
+<pre >
+
+  for i in range(0,20):
+      for k in range (0,20):
+          v = 0
+          wordgroup = str.split((firstlist[i]+ secondlist[k]))
+          wordgroup = ''.join(wordgroup)
+          for j in range (0,138):
+              correctline=(f_words[j] + s_words[j])
+              if wordgroup == correctline:
+                  v= v+1
+          if v != 0:
+              print(wordgroup + ' : ')
+              print(v)
+
+  #distribution of third level
+  for i in range(0,20):
+      for k in range (0,22):
+          v = 0
+          wordgroup = str.split(('I' + secondlist[i]+ thirdlist[k]))
+          wordgroup = ''.join(wordgroup)
+          for j in range (0,138):
+              correctline=(f_words[j] + s_words[j] + t_words[j])
+              if wordgroup == correctline:
+                  v= v+1
+          if v != 0:
+              print(wordgroup + ' : ')
+              print(v)
+</pre>
+
+        </div>
+
+      </div>
+    </div>
+  </body>
+
+  </html>

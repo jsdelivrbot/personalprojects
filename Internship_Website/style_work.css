@@ -1,0 +1,76 @@
+@media only screen and (min-width : 0px) {
+  body {
+  background-color: #e7ebf7;
+  color: #0e183e;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 200;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+  .backarrow {
+    margin-bottom: 40px;
+    width: 100px;
+    height:50px;
+    background-image: url(images/x-symbol.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .content a  {
+    width: 100px;
+  }
+
+.content {
+  padding: 20px;
+  max-width: 1200px;
+  margin:   auto;
+  max-width: 992px;
+ }
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+}
+h2 {
+  font-weight: 200;
+  margin: 10px 0;
+  font-size: 1em;
+}
+h3 {
+  font-weight: 400;
+  color: rgba(14,24,62,1);
+  border-bottom: 5px;
+  border-bottom-color: #e07722;
+  border-style: solid;
+  width: 200px;
+  font-size: 1.5em;
+  margin: 20px 0 20px 0;
+
+}
+p {
+  width: 100%;
+  font-size: 0.9em;
+  text-indent: 25px;
+  line-height: 1.2em;
+}
+  }
+@media only screen and (min-width : 600px) {
+  body {
+   /* background-color: whitesmoke; */
+  }
+
+  p {
+    font-size: 1em;
+  }
+  .content {
+      padding: 40px;
+
+  }
+}
+@media only screen and (min-width : 720px) {
+
+  body {
+    /*background-color: blanchedalmond; */
+  }
+}

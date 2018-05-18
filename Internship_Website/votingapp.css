@@ -1,0 +1,71 @@
+@media only screen and (min-width : 0px) {
+.container {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  left: -20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+  .container-holder {
+   width: 400%;
+    height: 100%;
+    max-width: 700px;
+  position: absolute;
+  left: -20px;
+  background-image: url(./images/Gradient_OrangeBlueDiagonal_2.png);
+    z-index: -1;
+  }
+
+
+
+.button {
+  height: 30px;
+  width: 30px;
+  background-color: #060f1c;
+  opacity: 0.9;
+  border: none;
+  color: whitesmoke;
+}
+
+
+
+
+
+.position-left {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+}
+
+.position-right {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+}
+}
+@media only screen and (min-width : 600px) {
+
+  .position-left {
+    left:-20px;
+  }
+  .position-right {
+    right: 20px;
+  }
+}
+@media only screen and (min-width : 720px) {
+
+  .container-holder-large {
+    height: 580px;
+    width: 110vw;
+    background-image: url(./images/Gradient_OrangeBlueDiagonal_2.png);
+    z-index: -1;
+    position: absolute;
+    left: -20px;
+  }
+  .container-holder {
+    visibility: hidden;
+  }
+}
+@media only screen and (min-width : 900px) {}

@@ -1,0 +1,181 @@
+
+@media only screen and (min-width : 0px) {
+body {
+  background-color: #e7ebf7;
+  color: #0e183e;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 200;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+.content {
+  max-width: 1200px;
+  margin:   auto;
+  max-width: 992px;
+ }
+  pre {
+    background-color: rgba(14,24,62,1);
+    height: 400px;
+    overflow-x: scroll;
+    width: 100%;
+    margin-top: 30px;
+    font-family: 'Inconsolata';
+    color: #ffffff;
+
+  }
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+}
+h2 {
+  font-weight: 200;
+  margin: 10px 0;
+  font-size: 1em;
+}
+h3 {
+  font-weight: 400;
+  color: rgba(14,24,62,1);
+  border-bottom: 5px;
+  border-bottom-color: #e07722;
+  border-style: solid;
+  width: 200px;
+  font-size: 1.5em;
+  margin: 80px 0 20px 0;
+
+}
+p {
+  width: 100%;
+  font-size: .9em;
+  text-indent: 25px;
+  line-height: 1.2em;
+}
+
+.imagebox img {
+  height: auto;
+  width: 105% ;
+  position: relative;
+  top: 20px;
+  left: -10px;
+  box-shadow: -5px 5px 30px #000000;
+}
+
+
+  nav {
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+
+
+}
+@media only screen and (min-width : 320px) {
+  body {
+    background-color: #e7ebf7;
+  }
+
+
+
+
+  .imagebox img {
+    width: 100%;
+    height: auto;
+    left: 0;
+  }
+}
+@media only screen and (min-width : 480px) {
+  body {
+    background-color: #e7ebf7;
+  }
+
+  h2 {
+   font-size: 1.3em;
+  }
+  #menuToggle {
+    margin-left: 1.8%;
+  }
+
+}
+@media only screen and (min-width : 600px) {
+  body {
+    background-color: #e7ebf7;
+  }
+  .imagebox img {
+    width: 100%;
+    box-shadow: -5px 5px 30px rgba(14,24,62,0.5);
+  }
+  .redline {
+    width: 15px;
+    height: 212vh;
+    position: absolute;
+    z-index: -1;
+    background-color: #e07722;
+    right:13%;
+    top: 500px;
+  }
+  h1 {
+    color: #0e183e;
+    font-size: 2.5em;
+  }
+  h2 {
+    margin-top: 2%;
+    color: #0e183e;
+    font-size: 1.1em;
+  }
+  h3 {
+    color: #0e183e;
+    border-bottom: 5px;
+    border-bottom-color: #e07722;
+    border-style: solid;
+    width: 200px;
+    font-size: 1.5em;
+      margin-left: 1%;
+  }
+  pre {
+    width: 80%;
+  }
+  p {
+    margin-left: 1%;
+    width: 80%;
+    color: #0e183e;
+    font-size: 1em;
+  }
+}
+@media only screen and (min-width : 992px) {
+
+
+  h1,h2,h3,p {
+    color:#0e183e ;
+    margin-left: 3.5%;
+    max-width: 70%;
+
+  }
+
+
+  .imagebox img {
+    width: 880px;
+    margin-left: 3%;
+  }
+  .redline {
+    right: 18%;
+  }
+
+
+}
+@media only screen and (min-width : 1200px) {
+
+
+
+  .imagebox img {
+    width: 100%;
+    margin-left: 0;
+  }
+  h1,h2,h3,p {
+    margin-left: 0;
+  }
+
+  .redline {
+        right:20%;
+
+  }
+}
