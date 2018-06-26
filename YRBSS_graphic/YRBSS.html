@@ -1,0 +1,47 @@
+<! DOCTYPE>
+<html>
+<head>
+	<title> A Bright Future </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+
+
+
+<body>
+	<p> hi</p>
+	<p> jo</p>
+
+	<script>
+		//is d3 on?
+		d3.selectAll("p")
+			.style("color", function(){
+				return "hsl(" + Math.random()*360 + ",100%,50%)";
+			});
+		//loading data
+		var filename = "YRBSS_CigData.json";
+
+		//getting alaska data in an array
+		var Alaska = [];
+		d3.json(filename, function(data) {dataViz(data)});
+		function dataViz(data) {
+			for(var i = 0; i < data.length;i++) {
+				if ((data[i].LocationAbbr == "AK")  && (data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
+					Alaska.push(data[i]);
+				}
+			}
+			Alaskagraph(Alaska);
+		};
+		function Alaskagraph(data) {
+			console.log("hi");
+
+		}
+
+	</script>
+</body>
+
+
+</html>
