@@ -1,0 +1,82 @@
+<! doctype>
+<html>
+	<head>
+		<title> Testing Area</title>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+	</head>
+
+	<script>
+		var filename = "testdata.csv";
+
+		function createSoccerViz(){
+			d3.csv(filename, function(data){overallTeamViz(data)});
+		}
+		function overallTeamViz(incomingData){
+			console.log("in overallTeamViz");
+			d3.select("svg")
+				.append("g")
+				.attr("id", "teamG")
+				.attr("transform", "translate(50,30)")
+				.selectAll("g")
+				.data(incomingData)
+				.enter()
+				.append("g")
+				.attr("class", "overallG")
+				.attr("transform", (data, i) => "translate(" + (i * 50) + ", 0)");
+			d3.selectAll("g.overallG")
+				.append("circle")
+				.attr("r",20);
+			d3.selectAll("g.overallG")
+				.append("text")
+				.attr("y",35)
+				.text(d => d.team);
+
+			const dataKeys = Object.keys(incomingData[0])
+				.filter(d => d !== "team" && d !== "region");
+			d3.select("#controls").selectAll("button.teams")
+				.data(dataKeys)
+				.enter()
+				.append("button")
+				.on("click", buttonClick)
+				.html(d => d);
+		function buttonClick(datapoint) {
+			var maxValue = d3.max(incomingData, d => parseFloat(d[datapoint]));
+			var radiusScale = d3.scaleLinear()
+								.domain([ 0, maxValue ]).range([ 2, 20 ]);
+			d3.selectAll("g.overallG").select("circle")
+				   .attr("r", d => radiusScale(d[datapoint]));
+		}
+		}
+	</script>
+
+	<body onload="createSoccerViz()">
+		<div id="viz">
+		<svg style="width:500px;height:500px;border:1px lightgray solid;" />
+		</div>
+		<div id="controls" />
+	</body>
+
+
+
+	<style>
+		text {
+			font-size: 10px;
+			  text-anchor: middle;
+			  fill: #4f442b;
+		}
+		g > text.active {
+			font-size: 30px;
+		}
+		circle {
+			fill: #75739F;
+			stroke: black;
+			stroke-width: 1px;
+		}
+		circle.active {
+			fill: #FE9922;
+		}
+		circle.inactive {
+			fill: #C4B9AC;
+		}
+	</style>
+</html>

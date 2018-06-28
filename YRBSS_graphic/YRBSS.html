@@ -1,47 +1,127 @@
 <! DOCTYPE>
 <html>
-<head>
-	<title> A Bright Future </title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title> A Bright Future </title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
 
-</head>
+	</head>
+
+	<body>
+		<p> hi</p>
+		<p> jo</p>
+		<svg style="width:500px;height:500px;border:1px lightgray solid;"></svg>
+
+		<script>
+			//is d3 on?
+			d3.selectAll("p")
+				.style("color", function(){
+					return "hsl(" + Math.random()*360 + ",100%,50%)";
+				});
+			//loading data
+			var filename = "YRBSS_CigData.json";
+			var width = 384;
+			var height = 250;
+			var margintop = 50;
+
+			//getting alaska data in an array
+			var Alaska = [];
+			d3.json(filename, function(data) {dataViz(data)});
 
 
-
-<body>
-	<p> hi</p>
-	<p> jo</p>
-
-	<script>
-		//is d3 on?
-		d3.selectAll("p")
-			.style("color", function(){
-				return "hsl(" + Math.random()*360 + ",100%,50%)";
-			});
-		//loading data
-		var filename = "YRBSS_CigData.json";
-
-		//getting alaska data in an array
-		var Alaska = [];
-		d3.json(filename, function(data) {dataViz(data)});
-		function dataViz(data) {
-			for(var i = 0; i < data.length;i++) {
-				if ((data[i].LocationAbbr == "AK")  && (data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
-					Alaska.push(data[i]);
+			function dataViz(data) {
+				for(var i = 0; i < data.length;i++) {
+					if ((data[i].LocationAbbr == "AK")  && (data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
+						Alaska.push(data[i]);
+					}
 				}
-			}
-			Alaskagraph(Alaska);
-		};
-		function Alaskagraph(data) {
-			console.log("hi");
+				Alaskagraph(Alaska);
+			};
+			function Alaskagraph(data) {
+				d3.selectAll("svg")
+					.append("g")
+					.attr("id", "alaska")
+					.attr("transform","translate(50,"+(50+margintop)+")")
+					.selectAll("g")
+					.data(data)
+					.enter()
+					.append("g")
+					.attr("class","alaskaDP")
+					.attr("transform", (d,i) => "translate(" + ((d.YEAR - 1993) * 17) + ", "+ (200 - (d.Data_Value*10))+")");
+				//graphing data as points
+				d3.selectAll("g.alaskaDP")
+					.append("circle")
+					.attr("r", 2);
+				d3.selectAll("g.alaskaDP")
+					.append("text")
+					.attr("y", 35)
+					.attr("x", -15)
+					.text(d => d.Data_Value );
 
+				//graphing data as line
+				var gen = d3.svg
+							.line()
+							.x(function(d){return 17*(d.YEAR - 1993)})
+							.y(function(d){ return (200 - (d.Data_Value*10))});
+				var lineGraph = d3.selectAll("svg").append("path")
+							.attr("transform","translate(50,"+(50+margintop)+")")
+							.attr("d", gen(data))
+							.attr("stroke", "black")
+							.attr("stroke-width", 1)
+							.attr("stroke-dasharray", "5")
+							.attr("fill", "none");
+				//graphing data as area + line
+
+
+				//creating axis
+				var timeFormat = d3.time.format('%Y').parse;
+
+				var x1 = d3.time.scale().range([0,width]);
+				var y1 = d3.scale.linear().range([height,0]);
+				var x2 = x1.domain([new Date(1993),new Date(2015)]);
+				var y2 = y1.domain([0,25]);
+				var xAxis = d3.svg.axis().scale(x2)
+								.orient("bottom")
+								.tickFormat(d3.format("d"))
+								.ticks(14)
+								.tickSize(2);
+				//var y2 = y1.domain([0, d3.max(data, d => {return d.Data_Value})]);
+
+
+				var yAxis = d3.svg.axis().scale(y2)
+								.orient("left")
+								.tickSize(2)
+								.ticks(6);
+
+				d3.selectAll("svg").append("g")
+					.attr("class", "xaxis" )
+					.attr("transform", "translate(50," + (margintop + height) + ")")
+					.call(xAxis)
+					.selectAll("text")
+						.style("text-anchor", "end")
+						.attr("transform", "rotate(-65)" )
+						.attr("dx",-10)
+						.attr("dy", 5);
+				d3.selectAll("svg").append("g")
+					.attr("class", "yaxis" )
+					.attr("transform", "translate(50,"+margintop+")")
+					.call(yAxis);
+
+			}
+
+</script>
+	</body>
+
+	<style>
+		circle {
+			fill: red;
+			opacity: 0.4;
 		}
 
-	</script>
-</body>
+	</style>
+
 
 
 </html>
