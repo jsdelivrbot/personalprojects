@@ -10,7 +10,7 @@
 	</head>
 
 	<body>
-		<svg style="width:500px;height:500px;border:1px lightgray solid;"></svg>
+		<svg ></svg>
 		<div id="controls"></div>
 
 		<script>
@@ -25,7 +25,7 @@
 
 
 			function setUp(data) {
-				var location = "UT";
+				var location = "US";
 				dataViz(data, location);
 
 			}
@@ -54,11 +54,7 @@
 				d3.selectAll("g.stateDP")
 					.append("circle")
 					.attr("r", 1.5);
-				d3.selectAll("g.stateDP")
-					.append("text")
-					.attr("y", 35)
-					.attr("x", -15)
-					.text(d => d.Data_Value );
+
 
 				//graphing data as line
 				var gen = d3.svg
@@ -136,9 +132,10 @@
 					.attr("x2", 0).attr("y2", yone(20))
 					.selectAll("stop")
 						 .data([
-							{offset: "0%", color: "yellow"},
-							{offset: "20%", color: "orange"},
-							{offset: "100%", color: "magenta"}
+							{offset: "0%", color: "#8fc44b"},
+							{offset:"10%", color:"#acad45"},
+							{offset: "20%", color: "#c09441"},
+							{offset: "100%", color: "#ec433d"}
 						  ])
 						.enter().append("stop")
 						  .attr("offset", function(d) { return d.offset; })
@@ -147,7 +144,7 @@
 			function controls(data) {
 				var statenames = [];
 				for(var i = 0; i < data.length;i++) {
-					if ((data[i].YEAR == "2015")&&(data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
+					if ((data[i].YEAR == "2013")&&(data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
 						statenames.push(data[i].LocationAbbr);
 					}
 				}
@@ -157,6 +154,7 @@
 					.data(statenames)
 					.enter()
 					.append("button")
+					.attr("class", "buttons")
 					.attr("id", (d,i) => {return d})
 					.on("click", function() {
 						buttonClick(this.id);
@@ -171,10 +169,12 @@
 		</script>
 		<style>
 			svg {
-				background: lightgrey;
+				background: #01111c;
+				width:500px;
+				height:400px;
 			}
 			.area {
-				opacity: 0.5;
+				opacity: 0.9;
 				  fill: url(#temperature-gradient);
 
 			}
@@ -185,12 +185,25 @@
 
 			.xaxis, .yaxis {
 				font-family: Avenir;
-				fill: black;
+				fill: white;
 
 			}
 			div {
 				background-color: red;
-				height: 30px;
+				width: 500px;
+			}
+
+			#controls {
+				background-color: #01111c;
+				padding: 10px;
+			}
+
+			.buttons {
+				border-color:white;
+				border-style: solid;
+				background-color: #01111c;
+				color: white;
+				margin: 3px;
 			}
 		</style>
 

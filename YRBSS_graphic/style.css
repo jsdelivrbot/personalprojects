@@ -1,0 +1,113 @@
+body {
+		font-family: 'Futura', sans-serif;
+	background-image: url(images/backgrounds/orangeteal.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-right: 0;
+	overflow-x: hidden;
+
+}
+h1 {
+	font-size: 4em;
+	text-transform: lowercase;
+	display: block;
+	clear: both;
+	margin-right: 6vw;
+	margin-top: 20vh;
+	margin-left: 70px;
+	margin-bottom: 20vh;
+	text-align: right;
+}
+
+.articles {
+	margin: 15px;
+	text-align: right;
+	min-height: 500px;
+}
+.headline {
+	padding: 2px;
+	font-size:1.6em;
+	width: 30vw;
+	height: 150px;
+	opacity: 0.2;
+	float: left;
+}
+a {
+	width: 300px;
+
+}
+a:link {
+	color: black;
+
+
+}
+a:visited {
+	color:#34343f;
+
+}
+a:hover {
+opacity: 0.6
+}
+
+#cereal {
+	opacity: 0.4;
+	width: 600px;
+	position: relative;
+	top: -60px;
+}
+#napkins {
+	opacity: 0.6;
+	width: 700px;
+	position: relative;
+	top: -40px;
+	left: 200px;
+}
+#work {
+	opacity: 0.4;
+	width: 600px;
+	position: relative;
+	left: 20vw;
+}
+#home {
+	opacity: 0.6;
+	width: 800px;
+	position: relative;
+
+}
+#department {
+	opacity: 0.3;
+	width: 800px;
+	position: relative;
+	top: -50px;
+	left: 400px
+}
+#marriage {
+	opacity: 0.3;
+	width: 400px;
+	position: relative;
+}
+#smartphones {
+	opacity: 0.3;
+	width: 400px;
+	position: relative;
+	top: -350px;
+		left: 150px;
+}
+#genz {
+	opacity: 0.7;
+	width: 600px;
+	position: relative;
+}
+#grim {
+	opacity: 0.05;
+	width: 1000px;
+	position: relative;
+}
+#tipping {
+	opacity: 0.68;
+	width: 700px;
+	position: relative;
+}
+
+
+
