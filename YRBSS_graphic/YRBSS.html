@@ -10,15 +10,22 @@
 	</head>
 
 	<body>
-		<svg ></svg>
-		<div id="controls"></div>
+		<div class="cig">
+			<svg id="ciguse" ></svg>
+			<div id="cigcontrols"></div>
+		</div>
+		<svg id="smokeless"></svg>
+
 
 		<script src="./cigGraphs.js"></script>
 		<style>
 			svg {
-				background: #01111c;
+				background: smokewhite;
 				width:500px;
 				height:400px;
+			}
+			#smokeless {
+				background: papayawhip;
 			}
 			.area {
 				opacity: 0.9;
@@ -32,25 +39,39 @@
 
 			.xaxis, .yaxis {
 				font-family: Avenir;
-				fill: white;
+				fill: black;
+				font-size: 12px;
 
 			}
-			div {
-				background-color: red;
+			.label{
+				font-size: 15px;
+				text-align: center;
+
+			}
+
+			.title {
+				font-family: Avenir;
+				size: 14px;
+				display: block;
+				text-align: center;
+			}
+
+
+			#cigcontrols {
 				width: 500px;
-			}
-
-			#controls {
-				background-color: #01111c;
+				background-color: lightgrey;
 				padding: 10px;
+
 			}
 
 			.buttons {
-				border-color:white;
+				border-color:black;
 				border-style: solid;
-				background-color: #01111c;
-				color: white;
+				background-color: lightgrey;
+				color: black;
 				margin: 3px;
+				font-size: 13px;
+
 			}
 		</style>
 

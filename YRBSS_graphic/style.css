@@ -1,6 +1,6 @@
 body {
 		font-family: 'Futura', sans-serif;
-	background-image: url(images/backgrounds/orangeteal.jpg);
+	background-image: url(images/backgrounds/crazycolor.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	margin-right: 0;
@@ -17,6 +17,7 @@ h1 {
 	margin-left: 70px;
 	margin-bottom: 20vh;
 	text-align: right;
+
 }
 
 .articles {

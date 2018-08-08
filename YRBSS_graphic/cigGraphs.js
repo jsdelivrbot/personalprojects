@@ -8,22 +8,33 @@
 			d3.json(filename, function(data) {setUp(data); controls(data);});
 
 
+
 			function setUp(data) {
 				var location = "US";
-				dataViz(data, location);
+				/*if(document.getElementById("smokeless")){
+					var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
+					dataViz(data, location,infosmk);
+				} */
+				if(document.getElementById("ciguse")){
+					var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
+					dataViz(data, location,infocig);
+				}
+
 
 			}
-			function dataViz(data, location) {
+			function dataViz(data, location,info) {
 				var state = [];
 				for(var i = 0; i < data.length;i++) {
-					if ((data[i].LocationAbbr == location)  && (data[i].TopicDesc == "Cigarette Use (Youth)")&& (data[i].Response == "Frequent") && (data[i].Gender =="Overall"))  {
+					if ((data[i].LocationAbbr == location)  && (data[i].TopicDesc == info[0].topicDesc)&& (data[i].Response == info[0].Response) && (data[i].Gender =="Overall"))  {
 						state.push(data[i]);
 					}
 				}
 				stateGraph(state);
 			};
+
 			function stateGraph(data) {
-				d3.selectAll("svg")
+				var svg = "#ciguse";
+				d3.selectAll(svg)
 					.append("g")
 					.attr("id", ""+data[0].LocationDesc +"")
 					.attr("transform","translate(50,"+(50+margintop)+")")
@@ -70,7 +81,7 @@
 								.tickSize(2)
 								.ticks(6);
 
-				xAxis = d3.selectAll("svg").append("g")
+				xAxis = d3.selectAll(svg).append("g")
 					.attr("class", "xaxis" )
 					.attr("transform", "translate(50," + (margintop + height) + ")")
 					.call(xAxis)
@@ -80,10 +91,31 @@
 						.attr("dx",-10)
 						.attr("dy", 5);
 
-				yAxis = d3.selectAll("svg").append("g")
-					.attr("class", "yaxis" )
-					.attr("transform", "translate(50,"+margintop+")")
-					.call(yAxis);
+				yAxis = d3.selectAll(svg).append("g")
+							.attr("class", "yaxis" )
+							.attr("transform", "translate(50,"+margintop+")")
+							.call(yAxis);
+
+
+				//axis labels
+				d3.selectAll(svg).append("text")
+					.attr("class","title")
+					.attr("y", 20)
+					.attr("x", 50)
+					.text("YRBSS Data f ")
+
+				d3.selectAll("g.xaxis").append("text")
+					.attr("class","label")
+					.attr("y", 60)
+					.attr("x", width/2.2)
+					.text("year");
+				d3.selectAll("g.yaxis").append("text")
+					.attr("class", "label")
+					.attr("x", -190)
+					.attr("y", -30)
+					.text("percent of students")
+					.attr("transform","rotate(-90)");
+
 
 				//graphing data as area
 				var horiz = d3.scale.linear()
@@ -97,7 +129,7 @@
 						.y0(height)
 						.y1(function(d) { return vert(d.Data_Value); });
 
-				d3.select("svg")
+				d3.select(svg)
 					.attr("width", width )
 					.attr("height", height )
 					.append("g")
@@ -108,17 +140,16 @@
 					.attr("transform", "translate(50,50)");
 
 				//code below based on http://bl.ocks.org/d3noob/4433087
-				d3.selectAll("svg").append("linearGradient")
+				d3.selectAll(svg).append("linearGradient")
 					.attr("id", "temperature-gradient")
 					.attr("gradientUnits", "userSpaceOnUse")
-					.attr("x1", 0).attr("y1", yone(30))
-					.attr("x2", 0).attr("y2", yone(40))
+					.attr("x1", 0).attr("y1", yone(0))
+					.attr("x2", 0).attr("y2", yone(20))
 					.selectAll("stop")
 						 .data([
-							{offset: "0%", color: "black"},
-							{offset:"10%", color:"#acad45"},
-							{offset: "20%", color: "#c09441"},
-							{offset: "100%", color: "#ec433d"}
+							{offset: "0%", color: "yellowgreen"},
+							{offset: "40%", color: "#c09441"},
+							{offset: "100%", color: "red"}
 						  ])
 						.enter().append("stop")
 						  .attr("offset", function(d) { return d.offset; })
@@ -132,7 +163,11 @@
 					}
 				}
 
-				d3.select("#controls")
+				d3.select("#cigcontrols").insert("g")
+					.attr("class", "title")
+					.append("text")
+					.text("Choose a State from the list below: ");
+				d3.select("#cigcontrols")
 					.selectAll("button")
 					.data(statenames)
 					.enter()
@@ -143,9 +178,23 @@
 						buttonClick(this.id);
 						})
 					.html(d => d);
+
 			}
 			function buttonClick(id) {
 				var location = id;
-				d3.selectAll("svg").selectAll("*").remove();				d3.json(filename, function(data) {dataViz(data, location)});
+				d3.selectAll("svg").selectAll("*").remove();
+
+				/*if(document.getElementById("smokeless")){
+					var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
+					d3.json(filename, function(data) {dataViz(data, location,infosmk)});
+				}*/
+				if(document.getElementById("ciguse")){
+					var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
+					d3.json(filename, function(data) {dataViz(data, location,infocig)});
+				}
+
+
+				//d3.json(filename, function(data) {dataViz(data, location)});
+
 			}
 
