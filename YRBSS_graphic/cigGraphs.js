@@ -11,29 +11,28 @@
 
 			function setUp(data) {
 				var location = "US";
-				/*if(document.getElementById("smokeless")){
-					var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
-					dataViz(data, location,infosmk);
-				} */
-				if(document.getElementById("ciguse")){
-					var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
-					dataViz(data, location,infocig);
-				}
+				var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
+				var svg1 ="#smokeless"
+					dataViz(data, location,infosmk, svg1);
+
+				var svg2 = "#ciguse";
+				var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
+					dataViz(data, location, infocig, svg2);
+
 
 
 			}
-			function dataViz(data, location,info) {
+			function dataViz(data, location,info,svg) {
 				var state = [];
 				for(var i = 0; i < data.length;i++) {
 					if ((data[i].LocationAbbr == location)  && (data[i].TopicDesc == info[0].topicDesc)&& (data[i].Response == info[0].Response) && (data[i].Gender =="Overall"))  {
 						state.push(data[i]);
 					}
 				}
-				stateGraph(state);
+				stateGraph(state,svg);
 			};
 
-			function stateGraph(data) {
-				var svg = "#ciguse";
+			function stateGraph(data,svg) {
 				d3.selectAll(svg)
 					.append("g")
 					.attr("id", ""+data[0].LocationDesc +"")
@@ -48,7 +47,14 @@
 				//graphing data as points
 				d3.selectAll("g.stateDP")
 					.append("circle")
-					.attr("r", 1.5);
+					.attr("r", 3)
+					.on("mouseover",function(){
+					console.log("muse");
+					d3.select(this).append("circle")
+						.attr("r",20)
+						.attr("cx",20)
+						.attr("cy",20);
+				});
 
 
 				//graphing data as line
@@ -56,11 +62,11 @@
 							.line()
 							.x(function(d){return (17.4*(d.YEAR - 1993))})
 							.y(function(d){ return (200 - (d.Data_Value*10))});
-				var lineGraph = d3.selectAll("svg").append("path")
+				var lineGraph = d3.selectAll(svg).append("path")
 							.attr("transform","translate(50,"+(50+margintop)+")")
 							.attr("d", gen(data))
-							.attr("stroke", "none")
-							.attr("stroke-width", 1)
+							.attr("stroke", "black")
+							.attr("stroke-width", 2)
 							.attr("fill", "none");
 
 
@@ -148,7 +154,7 @@
 					.selectAll("stop")
 						 .data([
 							{offset: "0%", color: "yellowgreen"},
-							{offset: "40%", color: "#c09441"},
+							{offset: "30%", color: "#c09441"},
 							{offset: "100%", color: "red"}
 						  ])
 						.enter().append("stop")
@@ -182,16 +188,15 @@
 			}
 			function buttonClick(id) {
 				var location = id;
-				d3.selectAll("svg").selectAll("*").remove();
+				var svg1 ="#smokeless"
+				var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
+				var svg2 = "#ciguse";
+				var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
 
-				/*if(document.getElementById("smokeless")){
-					var infosmk = [{"topicDesc":"Smokeless Tobacco Use (Youth)", "Response":"Current"}]
-					d3.json(filename, function(data) {dataViz(data, location,infosmk)});
-				}*/
-				if(document.getElementById("ciguse")){
-					var infocig = [{"topicDesc":"Cigarette Use (Youth)", "Response":"Frequent"}]
-					d3.json(filename, function(data) {dataViz(data, location,infocig)});
-				}
+				d3.selectAll("svg").selectAll("*").remove();
+				d3.json(filename, function(data) {dataViz(data, location,infosmk,svg1)});
+				d3.json(filename, function(data) {dataViz(data, location,infocig,svg2)});
+
 
 
 				//d3.json(filename, function(data) {dataViz(data, location)});

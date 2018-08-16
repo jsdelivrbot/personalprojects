@@ -6,18 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script src="https://d3js.org/d3.v3.min.js"></script>
+		<script src="https://d3js.org/topojson.v2.min.js"></script>
 
 	</head>
 
 	<body>
-		<div class="cig">
 			<svg id="ciguse" ></svg>
+			<svg id="smokeless"></svg>
 			<div id="cigcontrols"></div>
-		</div>
-		<svg id="smokeless"></svg>
+			<svg id="map"></svg>
+
 
 
 		<script src="./cigGraphs.js"></script>
+		<script src="./cigMap.js"></script>
 		<style>
 			svg {
 				background: smokewhite;
@@ -25,16 +27,16 @@
 				height:400px;
 			}
 			#smokeless {
-				background: papayawhip;
+				//background: papayawhip;
 			}
 			.area {
-				opacity: 0.9;
+				opacity: 0.4;
 				  fill: url(#temperature-gradient);
 
 			}
 			circle {
-				fill: whitesmoke;
-				opacity: .5;
+				fill: black;
+				opacity: 1;
 			}
 
 			.xaxis, .yaxis {
@@ -71,7 +73,11 @@
 				color: black;
 				margin: 3px;
 				font-size: 13px;
-
+			}
+			#map {
+				height:500px;
+				width: 500px;
+				background-color: papayawhip;
 			}
 		</style>
 
