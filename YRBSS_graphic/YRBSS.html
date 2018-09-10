@@ -1,87 +1,91 @@
 <! DOCTYPE>
 <html>
-	<head>
-		<title> A Bright Future </title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title> A Bright Future </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<script src="https://d3js.org/d3.v3.min.js"></script>
-		<script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <!--<script src="https://d3js.org/topojson.v2.min.js"></script>-->
+        <script src="https://unpkg.com/topojson-client@3"></script>
 
-	</head>
+  </head>
 
-	<body>
-			<svg id="ciguse" ></svg>
-			<svg id="smokeless"></svg>
-			<div id="cigcontrols"></div>
-			<svg id="map"></svg>
-
-
-
-		<script src="./cigGraphs.js"></script>
-		<script src="./cigMap.js"></script>
-		<style>
-			svg {
-				background: smokewhite;
-				width:500px;
-				height:400px;
-			}
-			#smokeless {
-				//background: papayawhip;
-			}
-			.area {
-				opacity: 0.4;
-				  fill: url(#temperature-gradient);
-
-			}
-			circle {
-				fill: black;
-				opacity: 1;
-			}
-
-			.xaxis, .yaxis {
-				font-family: Avenir;
-				fill: black;
-				font-size: 12px;
-
-			}
-			.label{
-				font-size: 15px;
-				text-align: center;
-
-			}
-
-			.title {
-				font-family: Avenir;
-				size: 14px;
-				display: block;
-				text-align: center;
-			}
+  <body>
+      <svg id="ciguse" ></svg>
+      <svg id="smokeless"></svg>
+      <div id="cigcontrols"></div>
+      <svg id="map"></svg>
+    <div class="spacer"></div>
 
 
-			#cigcontrols {
-				width: 500px;
-				background-color: lightgrey;
-				padding: 10px;
 
-			}
+    <script src="./cigGraphs.js"></script>
+    <script src="./cigMap.js"></script>
+    <style>
+      svg {
+        background: smokewhite;
+        width:500px;
+        height:400px;
+      }
+      #smokeless {
+        //background: papayawhip;
+      }
+      .area {
+        opacity: 0.4;
+          fill: url(#temperature-gradient);
 
-			.buttons {
-				border-color:black;
-				border-style: solid;
-				background-color: lightgrey;
-				color: black;
-				margin: 3px;
-				font-size: 13px;
-			}
-			#map {
-				height:500px;
-				width: 500px;
-				background-color: papayawhip;
-			}
-		</style>
+      }
+      circle {
+        fill: black;
+        opacity: 1;
+      }
 
-	</body>
+      .xaxis, .yaxis {
+        font-family: Avenir;
+        fill: black;
+        font-size: 12px;
+
+      }
+      .label{
+        font-size: 15px;
+        text-align: center;
+
+      }
+
+      .title {
+        font-family: Avenir;
+        size: 14px;
+        display: block;
+        text-align: center;
+      }
+
+
+      #cigcontrols {
+        width: 500px;
+        background-color: lightgrey;
+        padding: 10px;
+
+      }
+
+      .buttons {
+        border-color:black;
+        border-style: solid;
+        background-color: lightgrey;
+        color: black;
+        margin: 3px;
+        font-size: 13px;
+      }
+      #map {
+        background-color: none;
+      }
+
+      .spacer {
+        height: 60px;
+      }
+    </style>
+
+  </body>
 
 
 

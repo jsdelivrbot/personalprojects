@@ -1,83 +1,90 @@
-<! doctype>
-<html>
-	<head>
-		<title> Area</title>
-		<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<!-- <html>
+  <head>
+    <title> Area</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+
+  </head>
+  <body>
+    <svg id="map01"></svg>
+
+
+    <script>
+
+      var width = 1000;
+      var height = 600;
+
+
+      var projection = d3.geo.albersUsa()
+        .translate([width/2, height/2])
+        .scale([1000]);
+      var path = d3.geo.path()
+         .projection(projection);
+
+
+      console.log("hi");
+
+    </script>
+  </body>
 
   <style>
-	.boundary {
-	  fill: #ddd;
-	  stroke: #888;
-	  stroke-linejoin: round;
-	}
-	svg {
-	  border-style: solid;
-	  border-width: 1px;
-	  border-color: #ccc;
-	}
-	#tooltip{
-	  position: absolute;
-	  z-index: 2;
-	  background: rgba(0,153,76,0.8);
-	  width:130px;
-	  height:20px;
-	  color:white;
-	  font-size: 14px;
-	  padding:5px;
-	  top:-150px;
-	  left:-150px;
-	  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	}
+    #map01 {
+      height: 600px;
+      width: 1000px;
+      background-color: lightcyan;
+    }
+
+
   </style>
-</head>
+</html> -->
 
-<body>
-  <div id="map"></div>
-  <div id="tooltip"></div>
-  <!-- <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script> -->
 
-<script src="https://unpkg.com/topojson@3"></script>
+<!DOCTYPE html>
+<html>
+  <body>
+    <svg width="960" height="600" stroke="#fff" stroke-linejoin="round" stroke-linecap="round"></svg>
+  </body>
 
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
   <script>
-(function() {
-  var height = 600;
-  var width = 900;
-  var projection = d3.geoMercator();
-  var map = void 0;
-  var mexico = void 0;
-  var hover = function(d) {
-	console.log('d', d, 'event', event);
-	var div = document.getElementById('tooltip');
-	div.style.left = event.pageX +'px';
-	div.style.top = event.pageY + 'px';
-	div.innerHTML = d.properties.NAME_1;
-  };
-  var path = d3.geoPath().projection(projection);
-  var svg = d3.select("#map")
-	  .append("svg")
-	  .attr("width", width)
-	  .attr("height", height);
-  d3.json('geo-data.json', function(data) {
-	var states = topojson.feature(data, data.objects.MEX_adm1);
-	var b, s, t;
-	projection.scale(1).translate([0, 0]);
-	var b = path.bounds(states);
-	var s = .9 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-	var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-	projection.scale(s).translate(t);
-	map = svg.append('g').attr('class', 'boundary');
-	mexico = map.selectAll('path').data(states.features);
-	mexico.enter()
-	   .append('path')
-	   .attr('d', path)
-	   .on("mouseover", hover);
-	mexico.attr('fill', '#eee');
-	mexico.exit().remove();
-  });
-})();
+    //specify projection
+    var path = d3.geo.path().projection(d3.geo.albersUsa());
+
+    //load in data
+   d3.json("states.json",function(error, us){
+
+     var map = d3.select("svg").selectAll("path")
+        .data(us.features) //bind geoJson data to path
+        .enter()
+        .append("path")
+        .attr("d",path)
+        .on("mouseover",function(e){d3.select(this).style("opacity", "0.9")})
+        .on("mouseover",function(e){d3.select(this).style("fill", "#0e1c01")})
+        .on("mouseout", function(e) {d3.select(this).style("opacity","1")})
+        .on("mouseout", function(e) {d3.select(this).style("fill","#000000")})
+
+    });
+    //^ at this point map should be created
+
+    var color = d3.scale.quantize()
+              .range(["rgb(237,248,233)", "rgb(186,228,179)",
+               "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
+    d3.json("YRBSS_CigData.json", function(error,data){
+
+      getData(data);
+
+    })
+
+    function getData(data) {
+
+    }
+
+
+
+
+
+
   </script>
-</body>
-
-
 </html>
