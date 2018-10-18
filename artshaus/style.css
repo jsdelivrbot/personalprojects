@@ -1,0 +1,42 @@
+body {
+  font-family: 'Helvetica',sans-serif;
+}
+h1,h3 {
+  text-align: center;
+}
+text {
+ font-family: 'Barrio', cursive;
+  font-size: 10em;
+}
+
+h1{
+  font-family: 'Barrio', cursive;
+  font-size: 10em;
+}
+h3 {
+  opacity: 0.7;
+  font-size: 2em;
+}
+
+.title {
+position: absolute;
+margin: auto 10vw;
+margin-top: 100px;
+  visibility: hidden;
+//text-shadow:  5px 0px 10px rgba(0,0,0,.4);
+
+
+
+}
+
+svg {
+  background-color: none;
+}
+
+rect {
+  fill: none;
+  pointer-events: all;
+}
+circle {
+  stroke-width: 5px;
+}
