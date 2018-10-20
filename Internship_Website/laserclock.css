@@ -1,0 +1,30 @@
+img {
+  margin: 2px;
+  box-shadow: -5px 5px 30px rgba(0,0,0,0.7);
+}
+.pics {
+  margin: 0 auto;
+}
+.rightrow {
+  height: 400px;
+  width: 370px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.row1 img, .row2 img  {
+  height: 200px;
+  width: 200px;
+
+}
+.row1, .row2 {
+  display: block;
+}
+.sketch {
+  height: 400px;
+  margin: 10px;
+}
+
+#ideation {
+  width: 300px;
+}

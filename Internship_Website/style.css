@@ -1,5 +1,5 @@
 
-
+/*css specifically for sizing the image grid */
 @media (min-width:0px){
 .grid * {
   margin: 0 auto;
@@ -10,6 +10,7 @@
   text-align: center;
   max-width: 80vw;
   margin: 2.5vw auto;
+  margin-bottom: 200px;
 }
 .grid-item {
   padding: 5px;
@@ -44,6 +45,7 @@
   }
 }
 
+/* general css*/
 @media only screen and (min-width : 0px) {
 body {
   background-color: #0e183e;
@@ -66,9 +68,6 @@ body {
   height: 100vh;
   width: 100%;
 }
-
-
-
 .panel-wrap {
   perspective: 2000px;
   transition: transform 0.3s cubic-bezier(0.55, 0, 0.1, 1);
@@ -321,6 +320,7 @@ h5 {
     color: #0e183e;
 
   }
+
 .main {
   background-image: url(./images/tumblr_mmc5hobTl21r6eds5o1_1280.jpg);
   background-size: cover;
@@ -339,14 +339,13 @@ h5 {
   font-size: 1.2em;
   }
 .profilepic {
-    background-image: url(./images/PriyaProfile.png);
+    background-image: url(./images/PriyaProfile.jpg);
   background-size: contain;
     height: 300px;
     width: 300px;
     border-radius: 100%;
     margin: 25px auto 10px auto;
   }
-
 .montserrat {
   font-family: 'Montserrat', sans-serif;
 }
@@ -354,6 +353,7 @@ h5 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
 }
+
 .bottom {
   overflow-x: hidden;
 }
@@ -384,21 +384,20 @@ h5 {
   width: 200px;
   height: 300px;
   position: absolute;
-  top: 900px;
+  top: 850px;
   right: -30px;
 
 }
-.bottom_porometer {
-  background-image: url(./images/bottom_porometer.svg);
-  background-repeat: no-repeat;
-  width: 300px;
+.bottom_porom{
+     background-image: url(./images/bottom_porometer.svg);
+      background-repeat: no-repeat;
+     width: 300px;
   height: 300px;
-  position: absolute;
-  top: 1250px;
-  right: -40px;
+    position: absolute;
+    top: 1110px;
+    right: -20px;
 
-
-}
+  }
 .job {
   font-family: 'Montserrat', sans-serif;
   left: 80px;
@@ -420,23 +419,21 @@ h5 {
   line-height: normal;
 
 }
+.ams {
+    position: absolute;
+    top: 70px;
+  }
 .dolby {
-  position: absolute;
-  top: 20px;
-}
-.ceeo {
   position: absolute;
   top: 500px;
 }
+.ceeo {
+  position: absolute;
+  top: 1265px;
+}
 .nasa {
   position: absolute;
-  top: 965px;
-}
-.innovate {
-   position: absolute;
-  top: 1435px;
-  margin-left: 10px;
-  margin-bottom: 50px;
+  top: 1735px;
 }
 .portfolio {
   overflow-y: scroll;
@@ -445,6 +442,31 @@ h5 {
 .gallery img {
   float: left;
 }
+
+  .descrip {
+    background-color: white;
+    color: #0e183e;
+    margin-top: -5px;
+    padding: 10px;
+    font-family: 'Montserrat','Arial', sans-serif;
+
+  }
+
+  .descrip h5 {
+    margin-bottom: 10px;
+  }
+  .descrip p {
+    font-size: 0.8em;
+  }
+
+  .gridtitle {
+    position: absolute;
+    top: 50px;
+    z-index: 10;
+  }
+
+
+
 
 
 
@@ -463,7 +485,6 @@ padding-bottom: 5px;
 
 
 }
-
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
   body {
@@ -484,11 +505,7 @@ padding-bottom: 5px;
     top: -40px;
   }
 
-  .bottom_porometer {
-    top: 1200px;
-  right: -40px;
 
-  }
 
   .job {
     margin-left: 1vw;
@@ -507,7 +524,6 @@ padding-bottom: 5px;
 
 
 }
-
 /* Small Devices, Tablets Orange */
 @media only screen and (min-width : 800px) {
   .left_orange {
@@ -555,9 +571,6 @@ padding-bottom: 5px;
   }
 
   }
-
-
-
 /* Medium Devices, Desktops NORMAL */
 @media only screen and (min-width : 992px) {
  .profilepic {
